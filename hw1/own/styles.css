@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+
+*{
+    box-sizing: border-box;
+}
+
+span{
+    padding:0px;
+    margin:0px;
+    display:table-cell;
+}
+
+body{
+    color:white;
+}
+
+img{
+    display:block;
+}
+
+
+strong{
+    display:inline;
+    border:none;
+}
+
+
+.whole-body{
+    background-color:rgba(0,0, 0, 0.9);
+    height: 620px;
+    width: 500px;
+    padding: 25px;
+    /* height 535+icon bar */
+    border-radius:10px;
+}
+
+.main-pic{
+    height: 450px; 
+    width: 450px;
+    padding-bottom: 15px;
+}
+
+ul{
+    margin:0;
+    padding:0;
+    display:inline-block;
+    /* margin-block-end:0px; */
+    /* margin-block-start:0px; */
+    /* list-style: none; */
+}
+li{
+    display: inline-block;
+}
+
+
+.info-area{
+    padding:0px 15px 0px 15px;
+}
+
+
+.info-area li{
+    vertical-align: top;
+}
+
+.info-text{
+    text-align: left;
+    font-size: 14px;
+    margin-right: 32px;
+}
+
+.info-area img{
+    height: 70px;
+    width: 70px;
+    
+}
+
+
+.icon-bar{
+    margin: 15px 0px 15px 0px;
+}
+
+.material-icons{
+    font-size: 40px;
+}
+
+.left-most{
+    margin-right: 51px;
+}
+
+.center{
+    margin:0px 51px;
+}
+
+.right-most{
+    margin-left: 51px;
+}
+
