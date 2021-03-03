@@ -44,9 +44,6 @@ ul{
     margin:0;
     padding:0;
     display:inline-block;
-    /* margin-block-end:0px; */
-    /* margin-block-start:0px; */
-    /* list-style: none; */
 }
 li{
     display: inline-block;
@@ -99,8 +96,12 @@ li{
     margin: 15px 0px 15px 0px;
 }
 
+
 .material-icons{
     font-size: 40px;
+}
+.material-icons:hover{
+    color:gray;
 }
 
 .left-most{
