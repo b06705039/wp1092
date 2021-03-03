@@ -27,7 +27,7 @@ strong{
 
 .whole-body{
     background-color:rgba(0,0, 0, 0.9);
-    height: 620px;
+    height: 642px;
     width: 500px;
     padding: 25px;
     /* height 535+icon bar */
@@ -73,6 +73,26 @@ li{
     width: 70px;
     
 }
+
+.music_process{
+    -webkit-appearance:none;
+    width: 440px;
+    height: 1px;
+    /* outline: none; */
+    background: gray;
+    
+}
+/* Special styling for WebKit/Blink */
+.music_process::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: 1px solid #000000;
+    width:10px;
+    height:10px;
+    background-color: honeydew;
+    border-radius:50%;
+    
+}
+
 
 
 .icon-bar{
