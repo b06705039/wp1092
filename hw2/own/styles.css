@@ -28,6 +28,7 @@ body {
 	justify-content: space-between;
 	align-items: center;
 	margin: auto;
+
 }
 
 .image-viewer__button {
@@ -46,7 +47,6 @@ body {
 }
 
 .image-viewer__button img:hover {
-	border: 1px solid black;
 	border-radius: 50%;
 }
 
@@ -77,11 +77,13 @@ body {
 	bottom: 0;
 }
 
+
 #display {
 	object-fit: contain;
 	width: 50rem;
 	height: 30rem;
 	margin-bottom: 1rem;
+	/* background: url(/images/loading.gif); */
 }
 
 #source {
@@ -91,6 +93,7 @@ body {
 
 .disabled {
 	opacity: 0.2;
+	visibility: hidden;
 }
 
 .disabled:hover {
