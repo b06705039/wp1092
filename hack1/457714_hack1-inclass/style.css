@@ -198,3 +198,21 @@ button:hover {
     flex-direction: row;
     justify-content: flex-end;    
 }
+
+#comment-button-group button{
+    border:none;
+    border-radius: 2px;
+    width: 72px;
+    height: 40px;
+}
+
+#cancel-button{
+    background-color: #ffffff;
+    color: #606060;
+}
+
+#comment-button{
+    background-color: #cccccc;
+    color:#ffffff;
+
+}
