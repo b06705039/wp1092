@@ -8,11 +8,10 @@ class TodoApp extends Component {
     constructor(props){
         super(props);
         this.state = {
-            count: 2,
+            count: 0,
             List : [
-                {id:0,content:"first todo",show:1,done:true},
-                {id:1,content:"second todo",show:1,done:false},
             ],
+            filter_mode: "all",
         };
     }
 
@@ -34,8 +33,6 @@ class TodoApp extends Component {
                 this.setState(state=>({List:List}));
             }
         }
-
-        
     }
 
 
@@ -50,16 +47,32 @@ class TodoApp extends Component {
             console.log(error);
         };
     }
-
+    
+    filterList = (e) => {
+        console.log(e.target.className);
+        if(e.target.className==="Active"){
+            this.setState(state=>({filter_mode:"active"}));
+        }
+        else if(e.target.className==="Completed"){
+            this.setState(state=>({filter_mode:"completed"}));
+        }
+        else if(e.target.className==="All"){
+            this.setState(state=>({filter_mode:"all"}));
+        }
+    }
     
 
 
-    // todoList_state = () => {console.log('in todoclick function');};
-
     render() {
 
-        let DoneList = this.state.List.filter((item)=>item.done !==true);
-
+        let DoneList = [...this.state.List.filter((item)=>item.done !==true)];
+        let List = [...this.state.List];
+        if(this.state.filter_mode==="active"){
+            List = List.filter((item)=>item.done!==true);
+        }
+        else if(this.state.filter_mode==="completed"){
+            List = List.filter((item)=>item.done===true);
+        }
 
 
         return (
@@ -67,13 +80,13 @@ class TodoApp extends Component {
                 <Header text="todos" />
 
                 <section className="todo-app__main">
-                    <input className="todo-app__input" onKeyDown={this.enter_text} />
+                    <input className="todo-app__input" placeHolder="What needs to be done?" onKeyDown={this.enter_text} />
                     <ul className="todo-app__list" id="todo-list">
-                        {this.state.List.map(item => <Item item={item} key={item.id} detailChange={()=>{this.change_state(item.id)}} deleteFunc={()=>{this.deletebtn(item.id)}}/>)}
+                        {List.map(item => <Item item={item} key={item.id} detailChange={()=>{this.change_state(item.id)}} deleteFunc={()=>{this.deletebtn(item.id)}}/>)}
                     </ul>
                 </section>
 
-                <Foooter listLen={DoneList.length}/>
+                <Foooter DoneLen={DoneList.length} ListLen={this.state.List.length} filter_func={this.filterList} />
             </>
         )
     }

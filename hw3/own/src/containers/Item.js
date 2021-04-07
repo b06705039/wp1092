@@ -17,7 +17,7 @@ class Item extends Component{
         console.log(this.props.item.done);
         if(this.props.item.done===true){
             console.log('into true');
-            Detail = <h1 className="todo-app__item-detail" style={{textDecoration: 'line-through'}}>{this.props.item.content}</h1>;
+            Detail = <h1 className="todo-app__item-detail" style={{textDecoration: 'line-through', opacity: '0.5'}}>{this.props.item.content}</h1>;
         }
         else{
             Detail = <h1 className="todo-app__item-detail">{this.props.item.content}</h1>;
