@@ -39,7 +39,7 @@ class TodoApp extends Component {
     enter_text = e => {
         try{
             if(e.key === "Enter"){
-                let new_item = { id:this.state.count,content:e.target.value,show:1,done:0};
+                let new_item = { id:this.state.count,content:e.target.value,show:1,done:false};
                 this.setState( state => ({ List: state.List.concat(new_item),count:state.count+1}));
                 e.target.value = '';
             }
@@ -58,6 +58,11 @@ class TodoApp extends Component {
         }
         else if(e.target.className==="All"){
             this.setState(state=>({filter_mode:"all"}));
+        }
+        else if(e.target.className==="clean"){
+            console.log(this.state.List);
+            this.setState(state=>({List:[...state.List.filter((item)=>item.done===false)]}));
+            console.log(this.state.List);
         }
     }
     
