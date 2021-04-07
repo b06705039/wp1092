@@ -1,12 +1,12 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 
-export class Foooter extends Component {
+class Foooter extends Component {
     render() {
         return (
-            <footer className="todo-app__footer" id="todo-footer">
+            <div className="todo-app__footer" id="todo-footer">
                 <div className="todo-app__total">
-                    <input id="2">2</input>
-                    <label id="2">left</label>
+                    <span>{this.props.listLen}</span>
+                    <span> left</span>
                 </div>
                 <ul className="todo-app__view-buttons">
                     <button className="all">all</button>
@@ -14,7 +14,7 @@ export class Foooter extends Component {
                     <button className="Completed">completed</button>
                 </ul>
                 <div className="todo-app__clean">clean</div>
-            </footer>
+            </div>
         );
     }
 }
