@@ -24,7 +24,7 @@ class Foooter extends Component {
             show2 = <div className="todo-app__clean"><button className="clean" style={{visibility:"hidden"}}>Clear completed</button></div>;
         }
         else{
-            show2 = <div className="todo-app__clean"><button className="clean">Clear completed</button></div>;
+            show2 = <div className="todo-app__clean"><button className="clean" onClick={this.props.filter_func}>Clear completed</button></div>;
         }
 
 
