@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import styled from 'styled-components';
 import Row from './row';
+import {SheetContent} from '../context';
 
 // import GridItem from '../components/gridItem';
 
@@ -53,38 +54,29 @@ for(let i=0;i<SheetInformation.rowNum;i++){
 // above are variable
 
 
-
-
-
-
-
 function FakeSheet (){
 
     const [SheetInfo,setSheetInfo] = useState(SheetInformation);
     const [SheetContent, setSheetContent] = useState(twoDArray);
     
 
-    function SheetContentFunc(e,i,j) {
+    // const SheetContentFunc = (value,i,j) => {
 
-        console.log(e);
-        try{
-            if(e.key==="Enter"){
-                let modified = SheetContent;
-                console.log(SheetContent[i,j]);
-            }
-        }
-        catch{
-            console.log('typing...');
-        }
-       
-        console.log('into SheetContentFunc');
+    //     console.log("sheetcontentfunc",value,i,j);
+    //     console.log(SheetContent);
+    //     let modified = SheetContent;
+    //     SheetContent[i][j] = value;
+    //     setSheetContent(preSheet=>(modified));
+    //     console.log(SheetContent);
     
-    };
+    // };
 
 
-    
+
+
 
     return (
+        <SheetContent.provider value={{SheetContent, setSheetContent}}>
             <Sheet>
                 {/* <FuncBarTop></FuncBarTop>
                 <FuncBarLeft></FuncBarLeft> */}
@@ -94,11 +86,13 @@ function FakeSheet (){
                         <Row rowInfo={SheetInfo['colName']} />
                     </thead>
                     <tbody>
-                        {SheetContent.map(item=><Row key={item[0]} rowInfo={item} handleItem={SheetContentFunc}/>)}
+                        {/* {SheetContent.map(item=><Row key={item[0]} rowInfo={item} handleItem={SheetContentFunc}/>)} */}
+                        {SheetContent.map(item=><Row key={item[0]} rowInfo={item}/>)}
                     </tbody>
                 </Container>
 
             </Sheet>
+        </SheetContent.provider>
     );
 };
 

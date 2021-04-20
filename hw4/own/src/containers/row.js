@@ -11,7 +11,7 @@ function Row(props){
 
     return(
         <Tr >
-            {props.rowInfo.map(item => <GridItem itemInfo={props} content={item} j={props.rowInfo.findIndex(i=>i===item)}/>)}
+            {props.rowInfo.map(item => <GridItem content={item} i={props.rowInfo[0]} j={props.rowInfo.findIndex(i=>i===item)}/>)}
         </Tr>
     )
 
