@@ -14,14 +14,17 @@ export default function Grid ({i,j,grid_content}) {
     // if (value === 0) {
     //     setValue("");
     // }
-
     
+
+
+
+
 
     return (
         <td>
             <div className={temp_class_name} id={grid_id}>
                 {grid_content===0?<div className="school-name" id={value_id}>{mapping[""]}</div>:<div className="school-name" id={value_id}>{mapping[grid_content]}</div>}
-                
+                {/* <div className="school-name" id={value_id}>{mapping[value]}</div> */}
             </div>
         </td>
     );

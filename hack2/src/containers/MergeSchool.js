@@ -1,5 +1,5 @@
 // Designed by Ming-Yang, Ho (https://github.com/Kaminyou)
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import Header from '../components/Header';
 import Board2048 from '../components/Board2048'
 import '../containers/MergeSchool.css';
@@ -210,7 +210,9 @@ function MergeSchool() {
             // # 5 Implement yourself
             // #########################
             setBoard(nextBoardSetWithRandom.board);
-            setQs_ranking(qsRankNow);
+
+            
+            setQs_ranking(qsRankNow-1);
             setStep(stepNow+1);
             
             // #########################
@@ -285,7 +287,7 @@ function MergeSchool() {
     return (
         <>      
             <Header step={step}/>
-            <Board2048 className="wrapper" board={board} />
+            <Board2048 className="wrapper" board={board} qs_ranking={qs_ranking}/>
             <div className="btn-groups">
                 <div className="btn-useful" id="badend-btn" onClick={setBadEnd}>BadEnd</div>
                 <div className="btn-useful" id="goodend-btn" onClick={setGoodEnd}>GoodEnd</div>
