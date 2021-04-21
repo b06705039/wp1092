@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import GridItem from '../components/gridItem';
+import Item from '../components/gridItem';
 
 
 const Tr = styled.tr`
@@ -11,7 +11,8 @@ function Row(props){
 
     return(
         <Tr >
-            {props.rowInfo.map(item => <GridItem content={item} i={props.rowInfo[0]} j={props.rowInfo.findIndex(i=>i===item)}/>)}
+            <Item key={"-"+props.i} content={props.i} i={props.i} j="-"/>
+            { Object.keys(props.rowInfo).map( key=> <Item key={key} content={props.rowInfo[key]} handleItem={props.handleItem} i={props.i} j={key}/>) } 
         </Tr>
     )
 

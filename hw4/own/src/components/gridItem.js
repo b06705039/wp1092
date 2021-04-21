@@ -1,12 +1,13 @@
-import React,{useState,useEffect,useContext} from 'react';
+import React,{useState,useEffect} from 'react';
 import styled from 'styled-components';
 
 
 const Td = styled.td`
     font-size: 13px;
-    width: 94px;
-    height: 20px;
+    width: 105px;
+    height: 15px;
     padding: 0;
+    
 `;
 
 const Input = styled.input`
@@ -18,58 +19,44 @@ const Input = styled.input`
     }
 `;
 
+
 function Item(props){
 
-    // const [active,setActive] = useState("inactive");
-    
-    const [value,setValue] = useState(props.content);
-    const [deleteAll,setDeleteAll] = useState(true);
-    const {SheetContent,setSheetContent} = useContext(SheetContent);
+    const id = "grid-"+props.i+props.j;
+    const [active,setActive] = useState("active");
 
 
-    function handleChange(e){
-        if(deleteAll){
-            console.log("delete");
-            setValue("");
-            // props.handleItem(value,props.i,props.j);
-            let temp = SheetContent;
-            temp[props.i][props.j] = SheetContent;
-            setSheetContent(temp);
-            setDeleteAll(false);
+    function handleClick(e){
+        console.log("in handleClick", e.type);
+
+        e.type==="dblclick"?setActive("active"):setActive("focus");
+
+        console.log("-"+props.i,"grid--"+props.j);
+        // document.getElementById("grid-"+props.i+"-").setAttribute("style","background-color:#DCDCDC");
+        // document.getElementById("grid--"+props.j).setAttribute("style","background-color:#DCDCDC");
+        
+
+    }  
+
+    function handleKey(e){
+        console.log("in handlekey",e,e.target.value);
+
+        let value = e.target.value;
+        console.log("target value", value);
+        if(active === "focus"){
+            value = value.slice(-1);
+            console.log("modified value", value);
+            document.getElementById(id).value = "";
+            setActive("active");
         }
-        else{
-            setValue(e.target.value);
-            
-        }
+        props.handleItem(value,props.i,props.j);
+
     }
-    // useEffect(() => {
-    //     console.log("into effect");
-    //     props.handleItem(value,props.i,props.j);
-    //     console.log(active,value);
-    // },[value,active]);
 
-    function onkeydown(e){
-        console.log("into onkey");
-
-        if(e.key === "Enter"){
-            let temp = SheetContent;
-            temp[props.i][props.j] = SheetContent;
-            setSheetContent(temp);
-            // props.handleItem(value,props.i,props.j);
-            // setValue(e.target.value);
-            // setActive("inactive");
-            // console.log('enter',e.target.value)
-        }
-        // else{
-        //     props.handleItem(value,props.i,props.j);
-        //     if(active==="focus"){ console.log("into else focus");setValue(""); }
-        //     setActive("active");
-        // }
-    };
+    
     return( 
         <Td>
-            <Input defaultValue={value} onChange={handleChange} onKeyDown={onkeydown} onClick={()=>setDeleteAll(true)} onDoubleClick={()=>setDeleteAll(false)} onBlur={()=>setDeleteAll(true)} />
-            {/* <Input defaultValue={props.content} onKeyDown={(e)=>props.itemInfo.handleItem(e,props.itemInfo.rowInfo[0],props.j)} /> */}
+            <Input type="text" id={id} defaultValue={props.content} onDoubleClick={handleClick} onClick={handleClick} onKeyDown={handleKey}/>
         </Td>
     );
 
