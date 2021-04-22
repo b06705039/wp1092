@@ -33,17 +33,19 @@ function Item(props){
     else{
         classname = "content";
     };
-
     
 
     const [value,setValue] = useState(props.content);
     const [active,setActive] = useState("active");
     
 
-
     function handleClick(e){
-        console.log("in handleClick", e.type);
-        e.target.focus(handleRef(e));
+        props.ele(e.target);
+        console.log("in handleClick", e.type,"classname",classname);
+
+        if(classname!=='rowIndex' | classname!=='colIndex'){
+            e.target.focus(handleRef(e));
+        }
 
         if(active === "active"){
             e.type==="dblclick"?setActive("db"):setActive("focus");
@@ -74,6 +76,7 @@ function Item(props){
             
             if(nextItem){
                 e.target.blur();
+                props.ele(nextItem);
                 nextItem.dispatchEvent(clcl);
             }
             
@@ -83,7 +86,7 @@ function Item(props){
 
 
     function handleRef(e){
-        console.log("into focus e",e);
+        console.log("into focus e","index-"+"-"+props.j,"index-"+props.i+"-");
         document.getElementById("index-"+"-"+props.j).setAttribute("style","background-color:#DCDCDC");
         document.getElementById("index-"+props.i+"-").setAttribute("style","background-color:#DCDCDC");
     }
@@ -101,17 +104,31 @@ function Item(props){
 
         if (props.i==="-" | props.j==="-" ){
             document.getElementById(id).setAttribute("style","background-color:#F8F8F8");
+            document.getElementById(id).setAttribute("disabled",true);
         }
 
       return () => {
       };
     }, [value])
+
+
+
     
-    return( 
-        <Td >
-            <Input type="text" id={id} className={classname} defaultValue={props.content} onDoubleClick={handleClick} onClick={handleClick} onKeyDown={handleKey} onBlur={handleBlur}/>
-        </Td>
-    );
+    if(classname==="content"){
+        return( 
+            <Td >
+                    <Input type="text" id={id} className={classname} defaultValue={props.content} onDoubleClick={handleClick} onClick={handleClick} onKeyDown={handleKey} onBlur={handleBlur}/>
+            </Td>
+        );
+    }
+    else{
+        return( 
+            <Td >
+                    <Input disabled type="text" id={id} className={classname} defaultValue={props.content} onDoubleClick={handleClick} onClick={handleClick} onKeyDown={handleKey} onBlur={handleBlur}/>
+            </Td>
+        );
+    }
+    
 
 
     

@@ -2,6 +2,11 @@
     box-sizing: border-box;
 }
 
+.root{
+    display: flex;
+}
+
+
 body{
     margin: 0;
 }
