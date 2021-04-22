@@ -1,7 +1,6 @@
-import React from 'react';
+import React,{useState} from 'react';
 
 function Btn(props){
-
 
 
     function handleClick(e){

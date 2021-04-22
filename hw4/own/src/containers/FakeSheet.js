@@ -8,17 +8,25 @@ import Btn from '../components/btn';
 
 
 const Sheet = styled.div`
-    width: 2460px;
+    width: 100%;
     height: 1520px;
     display:fixed;
     
 `;
 
+
+const SheetInformation = {
+    'rowNum': 10,
+    'colName': [...Array(26).keys()].map(i=>String.fromCharCode(i+65)),
+    'colNum': 26
+    
+}
+
 const FuncBarTop = styled.div`
     background-color: #C8C8C8;
-    width: 2460px;
+    width: ${(SheetInformation.colNum+1)*105}px;
     height: 20px;
-    display: block;
+    display: inline-block;
 `;
 
 const FuncBarLeft = styled.div`
@@ -27,6 +35,7 @@ const FuncBarLeft = styled.div`
     // height:  1500px;
     height: 100%;
     display: block;
+    padding-top: 20px;
 `;
 
 const Container = styled.div`
@@ -38,25 +47,7 @@ const Table = styled.table`
     border-spacing: 0;
 `;
 
-
-
 // above are CSS
-
-const SheetInformation = {
-    'rowNum': 10,
-    'colNum': 2,
-    'colName': [...Array(26).keys()].map(i=>String.fromCharCode(i+65))
-}
-
-// let twoDArray = {}
-    
-// for(let i=0;i<SheetInformation.rowNum;i++){
-//     let templist = {};
-//     for(let j=0;j<SheetInformation.colNum;j++){
-//         templist[j.toString()] = "";
-//     }
-//     twoDArray[i.toString()] = templist;
-// }
 
 
 let tdArr = [];
@@ -70,31 +61,109 @@ for (let i=0;i<SheetInformation.rowNum;i++){
 
 // above are variable
 
+function deepCopy(sheet){
+    let Arr = [];
+    sheet.map(row=>{
+            let temp = [];
+            row.map(item=>temp.push(item))
+            Arr.push(temp);
+        });
+   
+    return Arr;
+};
+
 
 function FakeSheet (){
 
-
     const [SheetInfo,setSheetInfo] = useState(SheetInformation);
-    // const [SheetContent, setSheetContent] = useState(twoDArray);
-    const [SheetContent, setSheetContent] = useState(tdArr);
+    const [SheetContent, setSheetContent] = useState({content:tdArr});
     const [curEle, setCurEle] = useState(null);
 
     const SheetContentFunc = (value,i,j) => {
 
         console.log("sheetcontentfunc",value,i,j);
         
-        console.log(SheetContent);
-        let modified = SheetContent;
+        console.log(SheetContent.content);
+        let modified = deepCopy(SheetContent.content);
         modified[i][j] = value;
-        setSheetContent(modified);
-        console.log(SheetContent);
+        setSheetContent(state=>({...state,content:modified}));
+        console.log(SheetContent.content);
     
     };
 
     const AddRowCol = (e) =>{
         console.log("into add rowcol");
+
+        let i=null;
+        let j=null;
+        if(curEle!==null){
+            i = curEle.id.split('-')[1];
+            j = curEle.id.split('-')[2];
+            let clcl = new MouseEvent('click',{bubbles:true});
+            curEle.dispatchEvent(clcl);
+        }
+        
+
+        if(i===null){i=SheetInfo.rowNum};
+        if(j===null){j=SheetInfo.colNum};
+        
+        let modifiedSheet = deepCopy(SheetContent.content);
+
+        console.log("ij",i,j);
+
         if(e.target.id === "rowAdd"){
             
+            setSheetInfo(state=>({ ...state,
+                                rowNum:state.rowNum+1,
+                                }));
+            let temp = [];
+            for(let j=0;j<SheetInfo.colNum;j++){
+                temp.push("");
+            }
+            modifiedSheet.splice(i,0,temp);
+            setSheetContent(state=>({...state,content:modifiedSheet}));
+            
+        }
+        else if(e.target.id === "rowDel"){
+            i=i-1;
+            modifiedSheet.splice(i,1);
+            setSheetContent(state=>({...state,content:modifiedSheet}));
+            setSheetInfo(state=>({ ...state,
+                rowNum:state.rowNum-1,
+            }));
+            console.log(modifiedSheet);
+
+        }
+        else if(e.target.id === "colAdd"){
+            setSheetInfo(state=>({ ...state,
+                colNum:state.colNum+1,
+                colName:state.colName.push("AA")
+                }));
+
+            for(let x=0;x<SheetInfo.rowNum;x++){
+                modifiedSheet[x].splice(j,0,'');
+            }
+            // modifiedSheet.map(row=>{row.splice(j,0,'')});
+            setSheetContent(state=>({...state,content:modifiedSheet}));
+
+        }
+        else if(e.target.id === "colDel"){
+            j=j-1;
+            
+            // modifiedSheet.map(row=>row.splice(j,1));
+            for(let x=0;x<SheetInfo.rowNum;x++){
+                modifiedSheet[x].splice(j,1);
+            }
+
+
+            console.log(SheetInfo.colName.splice(j,1));
+            setSheetInfo(state=>({ ...state,
+                colNum:state.colNum-1,
+                colName:state.colName
+            }));
+
+            setSheetContent(state=>({...state,content:modifiedSheet}));
+
         }
     }
 
@@ -103,38 +172,42 @@ function FakeSheet (){
         console.log("in set cur ele",ele);
     }
 
-    
+    useEffect(() => {
+        console.log("Sheet content updated");
+      return () => {
+
+      };
+    }, [setSheetContent])
+
 
     return (
-        <Sheet>
-            <FuncBarTop>
-                <Btn text="+" id="colAdd" handleclick={AddRowCol}/>
-                <Btn text="-" id="colDel" handleclick={AddRowCol}/>
-            </FuncBarTop>
-            <FuncBarLeft>
-                <Btn text="+" id="rowAdd" handleclick={AddRowCol}/>
-                <Btn text="-" id="rowDel" handleclick={AddRowCol}/>
-            </FuncBarLeft>
-            
-            <Container>
-                <Table>
-                    <colgroup span="1" style={{backgroundColor:"#F8F8F8",width:"30px"}}></colgroup>
-                    <colgroup style={{width:"105px"}}></colgroup>
+            <Sheet>
+                <FuncBarLeft>
+                    <Btn text="+" id="rowAdd" handleclick={AddRowCol}/>
+                    <Btn text="-" id="rowDel" handleclick={AddRowCol}/>
+                </FuncBarLeft>
 
-                    {/* <tr>
-                        {SheetInfo['colName'].map((item,j)=><Item key={j} i="-" content={item} handleItem={SheetContentFunc} j={j-1} />)}
-                    </tr> */}
-                    {/* { Object.keys(SheetContent).map( key=> <Row key={key} i={key} rowInfo={SheetContent[key]} handleItem={SheetContentFunc} ele={updateCurEle}/>) }  */}
 
-                    <Row key={"-"} i={"-"} rowInfo={SheetInfo['colName']} handleItem={SheetContentFunc} ele={updateCurEle}/>
-                    {SheetContent.map((row,rowi)=><Row key={rowi} i={rowi} rowInfo={row} handleItem={SheetContentFunc} ele={updateCurEle}/>)}
-                </Table>
-            </Container>
+                <FuncBarTop>
+                    <Btn text="+" id="colAdd" handleclick={AddRowCol}/>
+                    <Btn text="-" id="colDel" handleclick={AddRowCol}/>
+                </FuncBarTop>
+                
+                <Container>
+                    <Table>
+                        <colgroup span="1" style={{backgroundColor:"#F8F8F8",width:"30px"}}></colgroup>
+                        <colgroup style={{width:"105px"}}></colgroup>
 
-            
+                        <Row key={"-"} i={"-"} rowInfo={SheetInfo['colName']} handleItem={SheetContentFunc} ele={updateCurEle}/>
+                        {SheetContent.content.map((row,rowi)=><Row key={rowi} i={rowi} rowInfo={row} handleItem={SheetContentFunc} ele={updateCurEle}/>)}
+                    </Table>
+                </Container>
 
-        </Sheet>
+                
+
+            </Sheet>
     );
+
 
 
 };

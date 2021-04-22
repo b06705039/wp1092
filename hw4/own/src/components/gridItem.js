@@ -20,7 +20,7 @@ function Item(props){
 
     
     let id = "";
-    (props.i==="-" | props.j==="-")?id ="index-"+props.i+props.j:id="grid-"+props.i+props.j;
+    (props.i==="-" | props.j==="-")?id ="index-"+props.i+props.j:id="grid-"+props.i+"-"+props.j;
 
     let classname = "";
 
@@ -70,7 +70,7 @@ function Item(props){
         if(e.key === "Enter"){
             console.log("into enter");
             let clcl = new MouseEvent('click',{ bubbles: true });
-            let nextId = "grid-"+(parseInt(props.i)+1)+props.j;
+            let nextId = "grid-"+(parseInt(props.i)+1)+"-"+props.j;
             let nextItem = document.getElementById(nextId)
             console.log(clcl);
             
@@ -99,7 +99,7 @@ function Item(props){
 
 
     useEffect(() => {
-        document.getElementById(id).value = value;
+        document.getElementById(id).value = props.content;
         
 
         if (props.i==="-" | props.j==="-" ){
