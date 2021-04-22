@@ -26,11 +26,9 @@ function Item(props){
 
     if (props.i==="-"){
         classname = "rowIndex";
-        document.getElementById(id).setAttribute("style","background-color:#F8F8F8");
     }
     else if(props.j==="-"){
         classname = "colIndex";
-        document.getElementById(id).setAttribute("style","background-color:#F8F8F8");
     }
     else{
         classname = "content";
@@ -67,7 +65,20 @@ function Item(props){
         props.handleItem(value,props.i,props.j);
         setActive("active");
 
-        // e.target.blur();
+        if(e.key === "Enter"){
+            console.log("into enter");
+            let clcl = new MouseEvent('click',{ bubbles: true });
+            let nextId = "grid-"+(parseInt(props.i)+1)+props.j;
+            let nextItem = document.getElementById(nextId)
+            console.log(clcl);
+            
+            if(nextItem){
+                e.target.blur();
+                nextItem.dispatchEvent(clcl);
+            }
+            
+        }
+        
     }
 
 
@@ -86,13 +97,19 @@ function Item(props){
 
     useEffect(() => {
         document.getElementById(id).value = value;
+        
+
+        if (props.i==="-" | props.j==="-" ){
+            document.getElementById(id).setAttribute("style","background-color:#F8F8F8");
+        }
+
       return () => {
       };
     }, [value])
     
     return( 
-        <Td className={classname}>
-            <Input type="text" id={id} defaultValue={props.content} onDoubleClick={handleClick} onClick={handleClick} onKeyDown={handleKey} onBlur={handleBlur}/>
+        <Td >
+            <Input type="text" id={id} className={classname} defaultValue={props.content} onDoubleClick={handleClick} onClick={handleClick} onKeyDown={handleKey} onBlur={handleBlur}/>
         </Td>
     );
 
