@@ -135,34 +135,33 @@ function FakeSheet (){
 
         }
         else if(e.target.id === "colAdd"){
-            setSheetInfo(state=>({ ...state,
-                colNum:state.colNum+1,
-                colName:state.colName.push("AA")
-                }));
+            // setSheetInfo(state=>({ ...state,
+            //     colNum:state.colNum+1,
+            //     colName:state.colName.push("AA")
+            //     }));
 
-            for(let x=0;x<SheetInfo.rowNum;x++){
-                modifiedSheet[x].splice(j,0,'');
-            }
-            // modifiedSheet.map(row=>{row.splice(j,0,'')});
-            setSheetContent(state=>({...state,content:modifiedSheet}));
+            // for(let x=0;x<SheetInfo.rowNum;x++){
+            //     modifiedSheet[x].splice(j,0,'');
+            // }
+            // // modifiedSheet.map(row=>{row.splice(j,0,'')});
+            // setSheetContent(state=>({...state,content:modifiedSheet}));
 
         }
         else if(e.target.id === "colDel"){
-            j=j-1;
+            // j=j-1;
             
-            // modifiedSheet.map(row=>row.splice(j,1));
-            for(let x=0;x<SheetInfo.rowNum;x++){
-                modifiedSheet[x].splice(j,1);
-            }
+            // // modifiedSheet.map(row=>row.splice(j,1));
+            // for(let x=0;x<SheetInfo.rowNum;x++){
+            //     modifiedSheet[x].splice(j,1);
+            // }
 
+            
+            // setSheetInfo(state=>({ ...state,
+            //     colNum:state.colNum-1,
+            //     colName:state.colName.splice(j,1),
+            // }));
 
-            console.log(SheetInfo.colName.splice(j,1));
-            setSheetInfo(state=>({ ...state,
-                colNum:state.colNum-1,
-                colName:state.colName
-            }));
-
-            setSheetContent(state=>({...state,content:modifiedSheet}));
+            // setSheetContent(state=>({...state,content:modifiedSheet}));
 
         }
     }
