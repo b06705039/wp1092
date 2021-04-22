@@ -5,5 +5,6 @@ import FakeSheet from "./containers/FakeSheet";
 
 ReactDOM.render(
     <FakeSheet />,
-    document.getElementById("root")
+    document.getElementById("root"),
+     
 );

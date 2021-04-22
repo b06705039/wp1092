@@ -10,3 +10,18 @@ div{
     margin: 0;
     padding: 0;
 }
+
+td{
+    font-size: 13px;
+    width: 105px;
+    height: 15px;
+    padding: 0;
+}
+
+.colIndex{
+    background-color: "#F8F8F8";
+}
+
+.rowIndex{
+    background-color: "#F8F8F8";
+}

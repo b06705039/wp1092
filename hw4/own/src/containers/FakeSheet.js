@@ -54,6 +54,7 @@ for(let i=0;i<SheetInformation.rowNum;i++){
 
 function FakeSheet (){
 
+
     const [SheetInfo,setSheetInfo] = useState(SheetInformation);
     const [SheetContent, setSheetContent] = useState(twoDArray);
     
@@ -76,19 +77,51 @@ function FakeSheet (){
         <Sheet>
             {/* <FuncBarTop></FuncBarTop>
             <FuncBarLeft></FuncBarLeft> */}
-
+            
             <Container>
-                <thead>
-                    {SheetInfo['colName'].map((item,j)=><Item i="-" content={item} handleItem={SheetContentFunc} j={j-1} />)}
-                </thead>
-                <tbody>
-                    { Object.keys(SheetContent).map( key=> <Row key={key} i={key} rowInfo={SheetContent[key]} handleItem={SheetContentFunc}/>) } 
-                    
-                </tbody>
+ 
+                <colgroup span="1" style={{backgroundColor:"#F8F8F8",width:"30px"}}></colgroup>
+                <colgroup style={{width:"105px"}}></colgroup>
+                 
+            
+                <tr>
+                    {SheetInfo['colName'].map((item,j)=><Item key={j} i="-" content={item} handleItem={SheetContentFunc} j={j-1} />)}
+                </tr>
+                { Object.keys(SheetContent).map( key=> <Row key={key} i={key} rowInfo={SheetContent[key]} handleItem={SheetContentFunc}/>) } 
+            
             </Container>
+
+            <table>
+                {/* <colgroup>
+                    <col span="2" style={{backgroundColor: "gray",width:"105px"}} />
+                    <col span="1" style={{backgroundColor: "gray"}} />
+                </colgroup> */}
+                <colgroup style={{backgroundColor: "yellow"}}></colgroup>
+                
+                <tr>
+                    <th>Item</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Memo</th>
+                </tr>
+                <tr>
+                    <td>iPhone 11</td>
+                    <td>$24,900</td>
+                    <td>2</td>
+                    <td>NA</td>
+                </tr>
+                <tr>
+                    <td>AirPods</td>
+                    <td>$6,490</td>
+                    <td>1</td>
+                    <td>NA</td>
+                </tr>
+            </table>
 
         </Sheet>
     );
+
+
 };
 
 export default FakeSheet;
