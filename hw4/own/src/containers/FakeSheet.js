@@ -135,16 +135,16 @@ function FakeSheet (){
 
         }
         else if(e.target.id === "colAdd"){
-            setSheetInfo(state=>({ ...state,
-                colNum:state.colNum+1,
-                colName:state.colName.push("AA")
-                }));
+            // setSheetInfo(state=>({ ...state,
+            //     colNum:state.colNum+1,
+            //     colName:state.colName.push("AA")
+            //     }));
 
-            for(let x=0;x<SheetInfo.rowNum;x++){
-                modifiedSheet[x].splice(j,0,'');
-            }
+            // for(let x=0;x<SheetInfo.rowNum;x++){
+            //     modifiedSheet[x].splice(j,0,'');
+            // }
 
-            setSheetContent(state=>({...state,content:modifiedSheet}));
+            // setSheetContent(state=>({...state,content:modifiedSheet}));
 
         }
         else if(e.target.id === "colDel"){
