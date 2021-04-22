@@ -26,10 +26,11 @@ function Item(props){
 
     if (props.i==="-"){
         classname = "rowIndex";
-        // document.getElementById(id).setAttribute("style","background-color:#DCDCDC");
+        document.getElementById(id).setAttribute("style","background-color:#F8F8F8");
     }
     else if(props.j==="-"){
         classname = "colIndex";
+        document.getElementById(id).setAttribute("style","background-color:#F8F8F8");
     }
     else{
         classname = "content";
