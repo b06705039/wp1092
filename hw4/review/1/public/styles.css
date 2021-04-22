@@ -1,0 +1,181 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+.flex {
+    display: flex;
+    flex-direction: row;
+    background-color: cornsilk;
+    height: 100vh;
+
+}
+
+.left {
+    flex: 1;
+    height: 100%;
+    background-color: rgb(226, 188, 157);
+}
+
+.right {
+    flex:49;
+    background-color: chartreuse;
+}
+
+.right .upper {
+    height: 4%;
+    width: 98vw;
+    background-color: rgb(226, 188, 157);
+}
+
+.right .content {
+    height: 96%;
+    width: 98vw;
+    
+    background-color:rgb(226, 188, 157);
+}
+
+table { 
+    max-height: 100%;
+    display: block;
+    overflow-x: scroll;
+    background-color:darkgrey;
+    white-space: nowrap;
+    border-collapse: collapse;
+}
+
+
+
+th, td{
+    min-width: 50px;
+    height: 35px;
+    background-color: rgb(123, 211, 123);
+    
+    border: 1px solid #fff;
+}
+
+.tableFocusLeft {
+    background-color: rgb(68, 179, 68);
+}
+
+
+.th-row {
+    background-color: rgb(142, 142, 250);
+    min-width: 100px;
+    position: sticky;
+    top: 0;
+}
+
+.stickyCol{
+    position: sticky;
+    left: 0;
+}
+
+.firstcell {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+}
+
+
+.tableFocusHead {
+    background-color: rgb(99, 99, 250);
+}
+
+.td-row {
+    background-color: white;
+    min-width: 100px;
+}
+
+input[type=text] {
+    width: 100px;
+    height: 100%;
+    cursor: default !important;
+    border-color: transparent;
+    border: none;
+    background-color: aliceblue;
+}
+
+input[type=text]:focus{
+    outline: none;
+    border: 2px solid rgb(86, 86, 255);
+}
+
+input[type=text]:not(:focus){
+    background-color: rgb(240, 240, 240);
+}
+
+input[type=text]:read-only{
+    background-color: rgb(233, 233, 233);
+}
+
+input[type=text]::selection {
+    background-color: transparent;
+}
+
+.upperBtnPlus {
+    background-color: rgb(2, 179, 2);
+    color: white;
+    font-size: larger;
+    margin-right: 30px;
+    margin-left: 30px;
+    height: 30px;
+    width: 30px;
+    border: 0;
+}
+
+.upperBtnPlus:hover {
+    background-color: rgb(110, 236, 110);
+}
+
+button:focus{
+    outline: none;
+}
+
+.upperBtnMinus {
+    background-color: red;
+    font-size: larger;
+    color: white;
+    height: 30px;
+    width: 30px;
+    border: 0;
+}
+
+.upperBtnMinus:hover {
+    background-color: rgb(250, 96, 96);
+}
+
+.leftBtnPlus:hover {
+    background-color: rgb(110, 236, 110);
+}
+
+.leftBtnMinus:hover {
+    background-color: rgb(250, 96, 96);
+}
+
+.leftBtnPlus {
+    margin-top: 50px;
+    margin-bottom: 30px;
+    background-color: rgb(2, 179, 2);
+    font-size: larger;
+    color: white;
+    height: 30px;
+    width: 30px;
+    border: 0;
+}
+
+.leftBtnMinus {
+    background-color: red;
+    font-size: larger;
+    color: white;
+    height: 30px;
+    width: 30px;
+    border: 0;
+}
+
+
+
+
