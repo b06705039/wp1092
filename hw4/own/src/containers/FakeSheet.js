@@ -1,4 +1,4 @@
-import React, {useState,useEffect} from "react";
+import React, {useState,useEffect,useRef} from "react";
 import styled from 'styled-components';
 import Row from './row';
 import Item from '../components/gridItem';
@@ -178,6 +178,14 @@ function FakeSheet (){
       };
     }, [setSheetContent])
 
+    const [name,setName] = useState('');
+    const inputRef = useRef();
+
+
+    function focus(e){
+        inputRef.current.focus();
+    }
+
 
     return (
             <Sheet>
@@ -194,11 +202,16 @@ function FakeSheet (){
                 
                 <Container>
                     <Table>
-                        <colgroup span="1" style={{backgroundColor:"#F8F8F8",width:"30px"}}></colgroup>
+                        {/* <colgroup span="1" style={{backgroundColor:"#F8F8F8",width:"30px"}}></colgroup>
                         <colgroup style={{width:"105px"}}></colgroup>
 
                         <Row key={"-"} i={"-"} rowInfo={SheetInfo['colName']} handleItem={SheetContentFunc} ele={updateCurEle}/>
-                        {SheetContent.content.map((row,rowi)=><Row key={rowi} i={rowi} rowInfo={row} handleItem={SheetContentFunc} ele={updateCurEle}/>)}
+                        {SheetContent.content.map((row,rowi)=><Row key={rowi} i={rowi} rowInfo={row} handleItem={SheetContentFunc} ele={updateCurEle}/>)} */}
+
+                        <input ref={inputRef} onChange={(e)=>setName(e.target.value)}></input>
+                        <p>{name}</p>
+                        <button onClick={focus}>focus on input</button>
+                        
                     </Table>
                 </Container>
 

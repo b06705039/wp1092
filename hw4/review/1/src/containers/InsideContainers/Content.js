@@ -115,16 +115,6 @@ function Content(props) {
             )
         }
         showAll.push(showRow);
-        /*
-        arr.map((value, row_id) => {
-                <td className="td-row" key={[index, row_id]}>
-                    <input type="text" id={index.toString() + "_" + row_id.toString()} 
-                    onClick={handleClick} onDoubleClick={handleDoubleClick} onBlur={handleBlur} readOnly={true}
-                    onKeyDown={handleEnter} defaultValue={value}
-                    onFocus={handleFocus}
-                    ></input>
-                </td>
-        })*/
     })
 
     return (
@@ -149,17 +139,7 @@ function Content(props) {
                             <tr key={index + "body"}>
                                 <th  className={(props.curRow === index)? "tableFocusLeft stickyCol" : "stickyCol"}>{index+1}</th>
                                 {showAll[index]}
-                                {/*arr.map((value, row_id) => {
-                                    return (
-                                        <td className="td-row" key={[index, row_id]}>
-                                            <input type="text" id={index.toString() + "_" + row_id.toString()} 
-                                            onClick={handleClick} onDoubleClick={handleDoubleClick} onBlur={handleBlur} readOnly={true}
-                                            onKeyDown={handleEnter} defaultValue={value}
-                                            onFocus={handleFocus}
-                                            ></input>
-                                        </td>
-                                    )
-                                })*/}
+                               
                             </tr>
                         )
                     })}
