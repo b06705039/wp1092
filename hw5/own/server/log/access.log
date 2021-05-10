@@ -1,0 +1,4 @@
+::1 - - [10/May/2021:15:27:25 +0000] "POST /api/guess/start HTTP/1.1" 200 31 "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36"
+::1 - - [10/May/2021:15:27:27 +0000] "GET /api/guess/guess?number=39 HTTP/1.1" 200 17 "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36"
+::1 - - [10/May/2021:15:27:30 +0000] "GET /api/guess/guess?number=20 HTTP/1.1" 200 16 "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36"
+::1 - - [10/May/2021:15:27:32 +0000] "GET /api/guess/guess?number=129 HTTP/1.1" 400 29 "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36"

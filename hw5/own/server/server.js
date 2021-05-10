@@ -2,9 +2,8 @@ import express from 'express'
 import cors from 'cors'
 import path from 'path'
 import guessRoute from './routes/guess.js'
-// import morgan from 'morgan'
-
-
+import fs from 'fs'
+import logger from 'morgan'
 
 
 
@@ -14,6 +13,8 @@ const isProduction = process.env.NODE_ENV === 'production'
 
 const app = express()
 
+var accessLogStream = fs.createWriteStream(path.join('./server/log/', 'access.log'), { flags: 'a' })
+app.use(logger('combined', { stream: accessLogStream }))
 // init middleware
 app.use(cors())
 app.use(express.json())
