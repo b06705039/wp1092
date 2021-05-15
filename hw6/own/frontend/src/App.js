@@ -8,9 +8,10 @@ function App() {
   const nameRef = useRef()
   const subjectRef = useRef()
   const scoreRef = useRef()
-  const queryRef = useRef()
+  const queryRef = useRef('')
 
   const [ queryType, setQueryType ] = useState("name")
+  const [ queryDatas, setQueryDatas ] = useState([])
 
   const addData = async() => {
     const ifSuccess = await add(nameRef.current.state.value, subjectRef.current.state.value, scoreRef.current.state.value)
@@ -25,6 +26,7 @@ function App() {
   const queryData = async() => {
     const queryResult = await query(queryType, queryRef.current.state.value)
     console.log("in app.js queryData: ", queryResult)
+    setQueryDatas(queryResult)
   }
 
 
@@ -70,7 +72,11 @@ function App() {
 
 
       <div className="queryResult">
-      
+        {queryDatas.length===0 && (
+          <p>
+            {queryType},{queryRef.value} not Found!
+          </p>
+        )}
       
       </div>
 
@@ -81,3 +87,5 @@ function App() {
 }
 
 export default App;
+
+

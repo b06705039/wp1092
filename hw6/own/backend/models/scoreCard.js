@@ -2,26 +2,37 @@ import mongoose from 'mongoose';
 
 const Schema = mongoose.Schema
 
-// Creating a schema, sort of like working with an ORM
 const socreCardSchema = new Schema({
-  name: {
-    type: String,
-    required: [true, 'Name field is required.']
-  },
-  subject: {
-    type: String,
-    required: [true, 'Subject field is required.']
-  },
-  score: {
-    type: Number,
-    required: [ true, 'Score field is required']
-  }
+  name: String,
+  subject: String,
+  score: Number
+  
 })
 
-// Creating a table within database with the defined schema
-const ScoreCard = mongoose.model('scoreCard', MessageSchema)
+// const socreCardSchema = new Schema({
+//   name: {
+//     type: String,
+//     required: [true, 'Name field is required.']
+//   },
+//   subject: {
+//     type: String,
+//     required: [true, 'subject field is required.']
+//   },
+//   score: {
+//     type: Number,
+//     required: [true, 'score field is required.']
+//   },
+// })
 
-// Exporting table for querying and mutating
+
+const ScoreCard = mongoose.model('scoreCard', socreCardSchema)
+
 export default ScoreCard;
 
-// module.exports = Message
+
+
+
+
+
+
+ 
