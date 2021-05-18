@@ -29,6 +29,17 @@ function App() {
   const getStations = async () => {
     // fetch data from database via backend
     // coding here ...
+
+    const station_name = "象山"
+
+
+    const{
+        data: { msg }
+    } = await instance.get('/api/getStation')
+
+    console.log("in app, get stations, response data: ", msg)
+
+
   }
 
   const calculateDistance = async () => {
@@ -38,6 +49,9 @@ function App() {
 
   // fetch data here after 1st render
   // coding here ...
+
+  getStations()
+  
 
   if (!Object.keys(data).length) {
     return (
@@ -63,7 +77,7 @@ function App() {
           </select>
 
           <span id="end-station-span">終點站</span>
-          <select id="end-select" className="end-station"> {/* you should add both onChange and value to attributes */}
+          <select id="end-select" className="end-station" > {/* you should add both onChange and value to attributes */}
             <option></option>
             {
               // generate options of all stations within option group

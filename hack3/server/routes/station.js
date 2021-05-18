@@ -22,6 +22,28 @@ const tidyUpData = (data, result) => {
   // }
   // coding here ...
 
+  console.log('in tidyup')
+
+  data.sort((a, b) => a.station_id - b.station_id)
+  const dataType = [...new Set(data.map(item => item.station_type))]
+
+  dataType.forEach(type => {
+    result[type] = []
+  })
+
+
+  data.map(item => {
+    result[item.station_type].push(item)
+  })
+
+
+  console.log('in tidyup end: ', result)
+
+
+  
+
+
+
   return result
 }
 
@@ -83,11 +105,18 @@ const GetStations = async (req, res) => {
     // fetch data from mongo
     // coding here ...
 
+    console.log("in route station, not run yet")
+    data = await Station.find({})
+    console.log("in route station, get station_name, data:", data)
+
     result = tidyUpData(data, result)
 
     if (Object.keys(result).length) {
       // return correct response here ...
+      res.send({msg: result})
+
     }
+
     else {
       throw new Error('Something Wrong !')
     }

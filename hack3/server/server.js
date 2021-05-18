@@ -1,5 +1,5 @@
 import express from 'express'
-import routes from './routes'
+import routes, { GetStations } from './routes'
 import mongoose from 'mongoose'
 import { dataInit } from './upload'
 
@@ -26,8 +26,18 @@ const dboptions = {
 // connect mongo correctly
 // coding here ...
 
+mongoose.connect(process.env.MONGO_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then((res) => {  console.log("mongo db connection created")
+                  dataInit()
+                });
+
 routes(app)
 
 app.listen(port, () => {
   console.log(`Server is up on port ${port}.`)
 })
+
+
