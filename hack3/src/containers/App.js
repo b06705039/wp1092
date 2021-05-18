@@ -35,7 +35,7 @@ function App() {
 
     const{
         data: { msg }
-    } = await instance.get('/api/getStation')
+    } = await instance.get('/getStation')
 
     console.log("in app, get stations, response data: ", msg)
 

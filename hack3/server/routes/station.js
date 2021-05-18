@@ -113,7 +113,10 @@ const GetStations = async (req, res) => {
 
     if (Object.keys(result).length) {
       // return correct response here ...
-      res.send({msg: result})
+      res.send({
+        message: 'success',
+        data: result
+      })
 
     }
 
@@ -123,7 +126,14 @@ const GetStations = async (req, res) => {
   } catch (err) {
     console.error(err.name + ' ' + err.message)
     // return correct response here ...
+    res.send({
+      message: 'error',
+      data: []
+    })
   }
+
+
+
 }
 
 // 2nd API
