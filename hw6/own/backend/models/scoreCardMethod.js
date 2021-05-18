@@ -1,8 +1,6 @@
 import scoreCard from './scoreCard.js'
 
 
-
-
 const deleteAll = async() => {
     try{
         await scoreCard.deleteMany({})
@@ -15,13 +13,11 @@ const deleteAll = async() => {
 }
 
 
-const addData = async(name, sub, score) => {
+const addData = async(name, subject, score) => {
     
-    // const existing = await scoreCard.findOne({name, sub, score})
-    console.log("in scMethod, ", name, sub, score)
+    console.log("in scMethod, ", name, subject, score)
     try{
-        
-        const student = new scoreCard({ name, sub, score })
+        const student = new scoreCard({ name, subject, score })
         console.log("in scMethod, save success", student)
         student.save()
     }catch(e){

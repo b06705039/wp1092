@@ -10,14 +10,12 @@ const instance = axios.create({
 const add = async(username, subject, score) => {
     console.log("in axios add", username, subject, score)
     
-    // const sentMsg = JSON.stringify({username, subject, score})
     const sentMsg = {"username":username, "subject":subject, "score":score}
     console.log("in axios before sent: ", sentMsg)
     
 
     const {
         data: { msg }
-    // } = await instance.post('/add', { params: {sentMsg} })
     } = await instance.post('/add', {"username":username, "subject":subject, "score":score} )
 
 

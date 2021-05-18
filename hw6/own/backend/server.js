@@ -24,8 +24,7 @@ app.listen(port, () => {
 })
 
 
-mongoose
-.connect("mongodb+srv://eva:78945612330@cluster0.51a4s.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", {
+mongoose.connect("mongodb+srv://eva:78945612330@cluster0.51a4s.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 })
