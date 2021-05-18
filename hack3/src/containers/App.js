@@ -30,14 +30,14 @@ function App() {
     // fetch data from database via backend
     // coding here ...
 
-    const station_name = "象山"
 
 
     const{
-        data: { msg }
+        data: { message, data }
     } = await instance.get('/getStation')
 
-    console.log("in app, get stations, response data: ", msg)
+    console.log("in app, get stations, response data: ", data)
+    setData(data)
 
 
   }
@@ -49,9 +49,13 @@ function App() {
 
   // fetch data here after 1st render
   // coding here ...
-
-  getStations()
+  useEffect(() => {
+    getStations()
+  }, [])
   
+  
+
+
 
   if (!Object.keys(data).length) {
     return (
@@ -93,8 +97,7 @@ function App() {
         </div>
 
         <div className="route-graph-info-container">
-          <RouteGraph route_data={{}} /> {/* you should pass data to child component with your own customized parameters */}
-          <RouteGraph route_data={{}} /> {/* you should pass data to child component with your own customized parameters */}
+          {Object.entries(data).map(line =>  <RouteGraph key={line} route_data={line} />) }
           <StationInfo /> {/* you should pass data to child component with your own customized parameters */}
         </div>
         
