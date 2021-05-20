@@ -1,0 +1,17 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "dotenv-defaults": "^2.0.1",
+    "express": "^4.17.1",
+    "mongoose": "^5.12.8",
+    "nodemon": "^2.0.7",
+    "ws": "^7.4.5"
+  },
+  "type": "module",
+  "scripts": {
+    "server": "nodemon server.js"
+  }
+}
