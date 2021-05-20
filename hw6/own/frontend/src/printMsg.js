@@ -8,7 +8,7 @@ const PrintMsg = ({type, data}) => {
 
     return (
         <>
-            {type==="not found!" && (<p>{data[0].type} ({data[0].content}) not found!</p>)}
+            {type==="not found!" && (<p>{data[0].type} ({data[0].content})</p>)}
             {type && data.length!==0 && data.map(Adata=><p> {type} {Adata.name} {Adata.subject} {Adata.score}</p>)}
         </>
     )

@@ -1,6 +1,6 @@
-import React, { useRef, useState, useEffect} from 'react'
+import React, { useRef, useState} from 'react'
 import './App.css'
-import { Button, Input, Radio } from 'antd'
+import { Button, Input, Radio, Form } from 'antd'
 import { add, clear, query } from './axios'
 import PrintMsg from './printMsg'
 
@@ -12,6 +12,9 @@ function App() {
   const subjectRef = useRef()
   const scoreRef = useRef()
   const queryRef = useRef('')
+
+  const [ form ]= Form.useForm()
+
   const [ nameValue, setNameValue ] = useState()
   const [ subjectValue, setSubjectValue ] = useState()
   const [ scoreValue, setScoreValue ] = useState()
@@ -49,9 +52,10 @@ function App() {
     }
     
     
-    setNameValue("")
-    setSubjectValue("")
-    setScoreValue("")
+    // setNameValue("")
+    // setSubjectValue("")
+    // setScoreValue("")
+    form.resetFields();
 
 
   }
@@ -112,25 +116,37 @@ function App() {
           </Button>
       </div>
       <div className="section">
-          <Input.Group>
+        <Form form={form}>
+          <Form.Item style={{ display: 'inline-block', width: 'calc(28% - 8px)', margin: '0 8px' }}>
+          {/* <Input.Group> */}
               <Input 
                 placeholder="Name"
-                ref={nameRef}
-                value={nameValue} />
+                ref={nameRef} />
+                {/* value={nameValue} */}
+          </Form.Item >
+          <Form.Item style={{ display: 'inline-block', width: 'calc(28% - 8px)', margin: '0 8px' }}>
               <Input
                 placeholder="Subject"
-                ref={subjectRef}
-                value={subjectValue} />
+                ref={subjectRef} />
+                {/* value={subjectValue} */}
+          </Form.Item>
+          <Form.Item style={{ display: 'inline-block', width: 'calc(28% - 8px)', margin: '0 8px' }}>
               <Input
                 placeholder="Score"
-                ref={scoreRef}
-                value={scoreValue} />
+                ref={scoreRef} />
+                {/* value={scoreValue} */}
+          </Form.Item>
+          <Form.Item style={{ display: 'inline-block', width: 'calc(5% - 8px)', margin: '0 8px' }}>
               <Button
                 onClick={addData}
                 type="reset">
                 Add
               </Button>
-          </Input.Group>
+          </Form.Item>
+          {/* </Input.Group> */}
+            
+          </Form>
+         
       </div>
 
       <div className="section">
@@ -140,8 +156,8 @@ function App() {
         </Radio.Group>
         <Input
               placeholder="Query string..."
-              ref={queryRef} 
-              value={queryValue}/>
+              ref={queryRef} />
+              {/* value={queryValue} */}
         <Button onClick={queryData}>
           Query
         </Button> 
