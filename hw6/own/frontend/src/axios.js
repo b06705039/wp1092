@@ -18,9 +18,7 @@ const add = async(username, subject, score) => {
         data: { msg }
     } = await instance.post('/add', {"username":username, "subject":subject, "score":score} )
 
-
-
-    console.log("in axios add, get msg: ", msg)
+    console.log("in axios add, get msg & ifexisting: ", msg)
     return msg
 }
 
@@ -51,6 +49,8 @@ const query = async(type, content) => {
     } = await instance.get('/query', { params: { 
                                             "type":type, 
                                             "content":content }})
+
+
     console.log("in axios query, get msg:", msg)
     return msg
 }

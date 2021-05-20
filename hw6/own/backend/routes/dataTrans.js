@@ -14,10 +14,10 @@ router.post('/add', async( req, res ) => {
 
     console.log("in routes add req: ", username, subject, score)
     try{
-        await addData(username, subject, score)
-        res.send({msg: "in dataTrans add, success"})
+        const ifexisting = await addData(username, subject, score)
+        res.send({msg: ifexisting})
     }catch{
-        res.send({msg: "in dataTrans add, fail"})
+        res.send({msg: "fail"})
     }
     
     
