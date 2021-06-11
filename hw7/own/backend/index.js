@@ -108,6 +108,7 @@ wss.on('connection', function connection(client) {
         const chatBox = await validateChatBox(chatBoxName, [sender, receiver]);
 
         // if client was in a chat box, remove that.
+        console.log("what is client.box?: ", client.box)
         if (chatBoxes[client.box])
           // user was in another chat box
           chatBoxes[client.box].delete(client);
@@ -163,7 +164,7 @@ wss.on('connection', function connection(client) {
 
     // disconnected
     client.once('close', () => {
-      console.log(chatBoxes)
+      console.log("chatBoxes: ", chatBoxes)
       chatBoxes[client.box].delete(client);
     });
   });
