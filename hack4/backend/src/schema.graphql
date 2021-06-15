@@ -1,5 +1,6 @@
 type Query {
-  people(severity: Int, locationKeywords: String): [Person!]!
+  people(severity: Int, locationKeywords: String!): [Person!]!
+  statsCount(severity: Int, locationKeywords: String!): Int
 }
 
 type Person {
