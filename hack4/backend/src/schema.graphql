@@ -1,0 +1,15 @@
+type Query {
+  people(severity: Int, locationKeywords: String): [Person!]!
+}
+
+type Person {
+  ssn: ID!
+  name: String!
+  severity: Int!
+  location: Location!
+}
+
+type Location {
+  name: String!
+  description: String!
+}
