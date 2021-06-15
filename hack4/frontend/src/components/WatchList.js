@@ -8,17 +8,16 @@ export default function WatchList() {
     // TODO
     // query countStats
     // save the result in a counts variable
-    const { loading, error, data, subscribeToMore } = useQuery(STATSCOUNT_QUERY);
+    const { loading, error, data, subscribeToMore } = useQuery(STATSCOUNT_QUERY, {variables:{
+                                                                                    severity:1,
+                                                                                    locationKeywords:"基隆市"
+                                                                                }});
     const counts = null;
 
     // TODO
     // use subscription
-    // console.log("constants: ", constants)
-    // console.log("loading data: ", loading?loading({
-    //                             variables:{
-    //                                 severity:1,
-    //                                 locationKeywords:"基隆市"
-    //                             }}):false)
+    console.log("constants: ", constants)
+    console.log("loading data: ", loading?data:false)
     
     // DO NOT MODIFY BELOW THIS LINE
     return (
