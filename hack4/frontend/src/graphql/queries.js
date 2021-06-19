@@ -1,9 +1,9 @@
-import { gql } from '@apollo/client';
+// import { gql } from '@apollo/client';
 
-export const STATSCOUNT_QUERY = gql`
-    query statsCount(
-        $severity: Integer!
-        $locationKeywords: String!
-    )
-`;
+// export const STATSCOUNT_QUERY = gql`
+//     query statsCount(
+//         $severity: Integer!
+//         $locationKeywords: String!
+//     )
+// `;
 
