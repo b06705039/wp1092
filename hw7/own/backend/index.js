@@ -68,18 +68,18 @@ const validateChatBox = async (name, participants) => {
     .execPopulate();
 };
 
-// (async () => {
-//   const a = await validateUser('a');
-//   const b = await validateUser('b');
+(async () => {
+  const a = await validateUser('a');
+  const b = await validateUser('b');
 
-//   console.log(a);
+  console.log(a);
 
-//   const cbName = makeName('a', 'b');
+  const cbName = makeName('a', 'b');
 
-//   const chatBox = await validateChatBox(cbName, [a, b]);
+  const chatBox = await validateChatBox(cbName, [a, b]);
 
-//   console.log(chatBox);
-// })();
+  console.log(chatBox);
+})();
 
 const chatBoxes = {}; // keep track of all open AND active chat boxes
 
@@ -141,6 +141,16 @@ wss.on('connection', function connection(client) {
         const sender = await validateUser(name);
         const receiver = await validateUser(to);
         const chatBox = await validateChatBox(chatBoxName, [sender, receiver]);
+
+
+        // const validateChatBox = async (name, participants) => {
+        //   let box = await ChatBoxModel.findOne({ name });
+        //   if (!box) box = await new ChatBoxModel({ name, users: participants }).save();
+        //   return box
+        //     .populate('users')
+        //     .populate({ path: 'messages', populate: 'sender' })
+        //     .execPopulate();
+        // };
 
         const newMessage = new MessageModel({ sender, body });
         await newMessage.save();
