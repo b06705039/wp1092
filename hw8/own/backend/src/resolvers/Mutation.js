@@ -9,8 +9,10 @@ const Mutation = {
       throw new Error("Missing User name")
 
     const existing = await db.UserModel.findOne({name})
-    if(existing)
-      throw new Error("Already have user ", name)
+    if(existing){
+      // throw new Error("Already have user ", name)
+      return existing
+    }
 
     const newUser = {
       id: uuidv4(),
@@ -26,6 +28,7 @@ const Mutation = {
     const chatBoxName = makeName(name1, name2);
     const existing = await db.ChatBoxModel.findOne({ name: chatBoxName });
     if (existing) {
+      return existing
       throw new Error('already have chatBox', chatBoxName);
     }
     
@@ -40,10 +43,12 @@ const Mutation = {
   },
 
   async createMessage(parent, {sender, to, body}, {db, pubsub}, info){
+    console.log("into backend createMsg")
     const chatBoxName = makeName(sender, to)
     
     const senderRef = await db.UserModel.find({name:sender})
     console.log(senderRef[0])
+
     const newMessage = {
       id: uuidv4(),
       sender: senderRef[0].id,
@@ -64,7 +69,8 @@ const Mutation = {
     ChatBox.messages.push(dbNewMsg.id)
     await ChatBox.save()
 
-    return await new db.MessageModel(newMessage).save()
+    return dbNewMsg
+    // await new db.MessageModel(newMessage).save()
   }
 };
 
