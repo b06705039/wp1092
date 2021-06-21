@@ -1,0 +1,65 @@
+type Query {
+  users(name: String): [User!]!
+  chatboxes(name: String): [Chatbox!]
+  userChat(name: String!): UserChat!
+}
+
+type Mutation {
+  createUser(data: UserInput): User!
+  createMessage(data: MessageInput): Message!
+  createChatbox(data: ChatboxInput): Chatbox!
+  ClearData(type: String!): String!
+  CloseUser(data: UserClose): UserChat!
+}
+
+type Subscription {
+  newMessage: ChatBoxSubscribed!
+}
+
+type ChatBoxSubscribed {
+  mutation: String!
+  body: String!
+  sender: String!
+  to: String!
+}
+type UserChat {
+  id: ID!
+  name: String!
+  open: [User!]
+  focus: User
+  messages: [Message!]
+}
+input UserClose {
+  name1: String!
+  name2: String!
+}
+type User {
+  id: ID!
+  name: String!
+}
+type Message {
+  id: ID!
+  sender: User!
+  body: String!
+}
+type Chatbox {
+  id: ID!
+  name: String!
+  users: [User!]!
+  messages: [Message!]
+}
+
+input UserInput {
+  name: String!
+}
+
+input MessageInput {
+  sender: String!
+  to: String!
+  body: String!
+}
+
+input ChatboxInput {
+  name1: String!
+  name2: String!
+}

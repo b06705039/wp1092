@@ -1,0 +1,32 @@
+type Query {
+  # users(query: String): [User!]!
+  # posts(query: String): [Post!]!
+  # comments: [Comment!]!
+  me: User!
+  # post: Post!
+}
+
+type Mutation {
+  createChatBox(name1: String, name2: String): ChatBox!
+}
+
+type User {
+  name: String!
+  ChatBox: [ID!]
+}
+type ChatBox {
+  id: ID!
+  name: String!
+  messages: [Message!]
+}
+
+type Message {
+  ChatBox: ID!
+  sender: ID!
+  body: String!
+}
+
+# type Subscription {
+#   # comment(postId: ID!): CommentSubscriptionPayload!
+#   # post: PostSubscriptionPayload!
+# }
