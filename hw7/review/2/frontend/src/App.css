@@ -1,7 +1,3 @@
-* {
-  /* border: 1px solid black; */
-}
-
 .App {
   display: flex;
   flex-direction: column;
@@ -33,11 +29,39 @@
   padding: 20px;
   overflow: auto;
 }
-.App-message-me {
-  display: flex;
-  justify-content: flex-end;
+
+.Text-Box-Left {
+    text-align: left;
+    height: 40px;
+    margin-bottom: 5px;
 }
 
-.App-message-me .Message-tag {
-  margin: 0;
+.Text-Box-Right {
+    text-align: right;
+    height: 40px;
+    margin-bottom: 5px;
+}
+
+.Name-Box {
+    padding: 3px;
+    margin-left: 4px;
+    margin-right: 4px;
+    background: rgb(176, 176, 176);
+    font-size: 0.7em;
+    border-radius: 3px;
+}
+
+.Text {
+    background: rgb(0, 153, 255);
+    color: white;
+    border-radius: 18px;
+    font-size: 15px;
+    padding: 12px;
+}
+
+.Unread {
+    text-align: center;
+    color: rgb(138, 141, 145);
+    font-size: 11px;
+    font-weight: 600;
 }

@@ -15,15 +15,15 @@
     <input id="input" placeholder="message" />
     <button onclick="sendMessage()">send</button>
     <script>
-      const nameDOM = document.getElementById("name");
-      const toDOM = document.getElementById("to");
-      const messagesDOM = document.getElementById("messages");
-      const inputDOM = document.getElementById("input");
+      const nameDOM = document.getElementById('name');
+      const toDOM = document.getElementById('to');
+      const messagesDOM = document.getElementById('messages');
+      const inputDOM = document.getElementById('input');
 
       let messages = [];
 
-      const server = new WebSocket("ws://localhost:8080");
-      server.onopen = () => console.log("Server connected.");
+      const server = new WebSocket('ws://localhost:8080');
+      server.onopen = () => console.log('Server connected.');
       server.onmessage = (m) => {
         onEvent(JSON.parse(m.data));
       };
@@ -31,21 +31,22 @@
 
       const startChat = () => {
         if (!nameDOM.value || !toDOM.value) {
-          throw new Error("Fill in the inputs");
+          throw new Error('Fill in the inputs');
         }
 
         server.sendEvent({
-          type: "CHAT",
+          type: 'CHAT',
           data: { to: toDOM.value, name: nameDOM.value },
         });
       };
 
       const sendMessage = () => {
         if (!inputDOM.value || !nameDOM.value || !toDOM.value) {
-          throw new Error("Empty input!");
+          throw new Error('Empty input!');
         }
+
         server.sendEvent({
-          type: "MESSAGE",
+          type: 'MESSAGE',
           data: { to: toDOM.value, name: nameDOM.value, body: inputDOM.value },
         });
       };
@@ -54,7 +55,7 @@
         resetMessages();
 
         messages.forEach(({ body, name }) => {
-          const newEle = document.createElement("li");
+          const newEle = document.createElement('li');
           newEle.innerHTML = `${name}: ${body}`;
           messagesDOM.appendChild(newEle);
         });
@@ -62,18 +63,18 @@
 
       const resetMessages = () => {
         // remove all children
-        messagesDOM.innerHTML = "";
+        messagesDOM.innerHTML = '';
       };
 
       const onEvent = (e) => {
         const { type } = e;
-        switch (type) {
-          case "CHAT": {
-            messages = e.data.messages;
 
+        switch (type) {
+          case 'CHAT': {
+            messages = e.data.messages;
             break;
           }
-          case "MESSAGE": {
+          case 'MESSAGE': {
             messages.push(e.data.message);
             break;
           }

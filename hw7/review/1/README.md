@@ -1,8 +1,10 @@
-# CHAT-APP / MongoDB Version
+# Web Programming HW7
+<img width="400" alt="截圖 2021-06-21 上午11 07 21" src="https://user-images.githubusercontent.com/44222693/122702037-2a772e80-d281-11eb-8e8b-50b5dcd86fd5.png">
 
-- 貼心位批改同學著想，因此直接把 DB 的 API KEY 寫死(拜託別扣我分 lol)
-- 直接提供同學幾個 USER：
-  -- Bin、Lin、Leo、Fu
-- 裡面我記得應該彼此都有一些對話紀錄了，直接從 Bin 開始登入測試即可
-- 自評，進階功能寫到切換、刪除、新增等動作皆可自動更新畫面上兩人的訊息
-- 前端: root 底下 npm start / 後端: root 底下 npm run server
+* Run
+  * 目錄底下yarn start開啟前端，yarn server開啟後端
+  * 使用.env.defaults，但因為把.env.defaults加入.gitignore，所以backend下面需新增/複製一份.env.defaults的檔案，或直接更改`backend/src/mongo.js`
+  
+* 進階功能
+  * 處理錯誤操作（如hw7.pdf）
+  * 處理輸入過長時 "Line Wrapping" 的問題
