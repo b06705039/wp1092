@@ -1,0 +1,67 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 500px;
+  margin: auto;
+}
+
+.App-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.App-title h1 {
+  margin: 0;
+  margin-right: 20px;
+  font-size: 3em;
+}
+
+.App-messages {
+  width: 100%;
+  height: 300px;
+  background: #eeeeee52;
+  border-radius: 10px;
+  margin: 20px;
+  padding: 20px;
+  overflow: auto;
+}
+
+.Text-Box-Left {
+    text-align: left;
+    height: 40px;
+    margin-bottom: 5px;
+}
+
+.Text-Box-Right {
+    text-align: right;
+    height: 40px;
+    margin-bottom: 5px;
+}
+
+.Name-Box {
+    padding: 3px;
+    margin-left: 4px;
+    margin-right: 4px;
+    background: rgb(176, 176, 176);
+    font-size: 0.7em;
+    border-radius: 3px;
+}
+
+.Text {
+    background: rgb(0, 153, 255);
+    color: white;
+    border-radius: 18px;
+    font-size: 15px;
+    padding: 12px;
+}
+
+.Unread {
+    text-align: center;
+    color: rgb(138, 141, 145);
+    font-size: 11px;
+    font-weight: 600;
+}

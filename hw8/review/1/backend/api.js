@@ -1,0 +1,41 @@
+`
+mutation{
+  createChatbox(data:{name1:"Sam", name2:"Thomson"}){
+    id
+    name
+    users{
+      id
+      name
+    }
+    messages{
+      sender{
+        name
+      }
+      body
+    }
+  }
+}
+`;
+`
+  createMessage(data:{sender: "Sam", to: "Thomson", body: "Reply you asshole"}){
+    id
+    sender{
+      id
+      name
+    }
+    body
+  }
+}
+`;
+
+`subscription{
+  chatbox(name:"Sam_Thomson"){
+    mutation
+    data{
+      sender{
+        name
+      }
+      body
+    }
+  }
+}`;
