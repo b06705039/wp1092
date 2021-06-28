@@ -142,6 +142,13 @@ wss.on('connection', function connection(client) {
         const receiver = await validateUser(to);
         const chatBox = await validateChatBox(chatBoxName, [sender, receiver]);
 
+        if (chatBoxes[client.box])
+          // user was in another chat box
+          chatBoxes[client.box].delete(client);
+
+        // use set to avoid duplicates
+        client.box = chatBoxName;
+
 
         // const validateChatBox = async (name, participants) => {
         //   let box = await ChatBoxModel.findOne({ name });
@@ -169,6 +176,8 @@ wss.on('connection', function connection(client) {
             },
           });
         });
+
+
       }
     }
 
